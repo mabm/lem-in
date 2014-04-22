@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
-## Last update Tue Apr 22 14:55:33 2014 Geoffrey Merran
+## Last update Tue Apr 22 15:09:11 2014 Geoffrey Merran
 ##
 
 CC		= cc
@@ -21,18 +21,18 @@ CORE_FOL	= core/
 PARSER_FOL	= parser/
 
 SRC_CORE	= $(CORE_FOL)/main.c
-# SRC_PARSER	=
+SRC_PARSER	= $(PARSER_FOL)/parser.c
 
 OBJ_CORE	= $(SRC_CORE:.c=.o)
-# OBJ_PARSER	= $(SRC_PARSER:.c=.o)
+OBJ_PARSER	= $(SRC_PARSER:.c=.o)
 
 LIB		= ./libmy/
 L_NAME		= -lmy
 
 all:		libs $(NAME)
 
-$(NAME):	$(OBJ_CORE)
-	$(CC) -o $(NAME) $(OBJ_CORE) $(L_NAME) -L$(LIB)
+$(NAME):	$(OBJ_CORE) $(OBJ_PARSER)
+	$(CC) -o $(NAME) $(OBJ_CORE) $(OBJ_PARSER) $(L_NAME) -L$(LIB)
 
 libs:
 	make -C $(LIB)
