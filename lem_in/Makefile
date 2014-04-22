@@ -1,0 +1,50 @@
+##
+## Makefile for Makefile in /home/merran_g/work/c_elem/lem-in/lem_in
+## 
+## Made by Geoffrey Merran
+## Login   <merran_g@epitech.net>
+## 
+## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
+## Last update Tue Apr 22 14:55:33 2014 Geoffrey Merran
+##
+
+CC		= cc
+
+RM		= rm -f
+
+CFLAGS		+= -W -Wall -Wextra -pedantic -ansi -I$(INCLUDES)
+INCLUDES	= ./includes/
+
+NAME		= lem_in
+
+CORE_FOL	= core/
+PARSER_FOL	= parser/
+
+SRC_CORE	= $(CORE_FOL)/main.c
+# SRC_PARSER	=
+
+OBJ_CORE	= $(SRC_CORE:.c=.o)
+# OBJ_PARSER	= $(SRC_PARSER:.c=.o)
+
+LIB		= ./libmy/
+L_NAME		= -lmy
+
+all:		libs $(NAME)
+
+$(NAME):	$(OBJ_CORE)
+	$(CC) -o $(NAME) $(OBJ_CORE) $(L_NAME) -L$(LIB)
+
+libs:
+	make -C $(LIB)
+
+clean:
+	(cd $(LIB); make clean)
+	$(RM) $(OBJ_CORE)
+
+fclean:		clean
+	(cd $(LIB); make fclean)
+	$(RM) $(NAME)
+
+re:		fclean all
+
+.PHONY:	all clean fclean re
