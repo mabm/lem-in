@@ -5,22 +5,22 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 13:59:42 2014 Geoffrey Merran
-** Last update Tue Apr 22 15:08:47 2014 Geoffrey Merran
+** Last update Thu Apr 24 10:55:10 2014 Geoffrey Merran
 */
 
 #include "main.h"
 
-void	lem_in(char **av)
+void	lem_in()
 {
   t_map	*map;
 
-  map = parse_lemin(av);
+  map = parse_lemin();
 }
 
 int	main(int ac, char **av)
 {
-  if (ac > 1)
-    lem_in(av);
+  if (ac == 1)
+    lem_in();
   else
     printf(VM_USAGE);
   return (EXIT_SUCCESS);
