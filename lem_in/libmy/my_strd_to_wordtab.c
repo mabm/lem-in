@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Wed Dec 11 19:53:50 2013 Geoffrey Merran
-** Last update Thu Dec 12 10:30:43 2013 Geoffrey Merran
+** Last update Thu Apr 24 15:52:21 2014 Geoffrey Merran
 */
 
 #include <stdlib.h>
@@ -74,7 +74,7 @@ char	**my_countdchar(char *str, char **return_tab, char *delim)
   return (return_tab);
 }
 
-  char	**my_putstr_indtab(char *str, char **return_tab, char *delim)
+char	**my_putstr_indtab(char *str, char **return_tab, char *delim)
 {
   int	i;
   int	a;
