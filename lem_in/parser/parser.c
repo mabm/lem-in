@@ -5,62 +5,14 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:57:57 2014 Geoffrey Merran
-** Last update Fri Apr 25 15:55:31 2014 Geoffrey Merran
+** Last update Fri Apr 25 20:04:44 2014 Geoffrey Merran
 */
 
 #include "parser.h"
 
-int	is_command(char *buffer)
-{
-  if (strncmp(buffer, "##", 2) == 0)
-    return (1);
-  return (0);
-}
-
-int	is_commentary(char *buffer)
-{
-  if (buffer[0] == '#')
-    return (1);
-  return (0);
-}
-
-int	get_line_type(char *buffer)
-{
-  if (is_command(buffer))
-    return (COMMAND_TYPE);
-  if (is_commentary(buffer))
-    return (COMMENTARY_TYPE);
-  return (OTHER_TYPE);
-}
-
 void	parse_command(char *buffer, int *step, t_map *map)
 {
   printf("%s\n", buffer);
-}
-
-void	get_nb_ants(char **tab, int *step, t_map *map)
-{
-  if (!my_str_isnum(tab[0]))
-    {
-      printf("Non decimal value allowed : %s\n", tab[0]);
-      exit(EXIT_FAILURE);
-    }
-  else
-    {
-      if (*step != 0)
-	{
-	  printf("Invalid syntax : check how to build a map\n");
-	  exit(EXIT_FAILURE);
-	}
-      map->nb_ants = atoi(tab[0]);
-      *step = 1;
-      printf("%s\n", tab[0]);
-    }
-}
-
-void	get_room(char **tab, int *step, t_map *map)
-{
-  
 }
 
 void	parse_data2(char *buffer, int *step, t_map *map)
@@ -90,7 +42,10 @@ void	parse_data(char *buffer, int *step, t_map *map)
   if (my_strlen_tabs(tab) == 1)
     parse_data2(tab[0], step, map);
   else if (my_strlen_tabs(tab) == 3)
-    get_room(tab, step, map);
+    {
+      get_room(tab, step, map);
+      printf("%s\n", buffer);
+    }
   else
     {
       printf("Invalid line : %s\n", buffer);

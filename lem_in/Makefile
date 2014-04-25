@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
-## Last update Fri Apr 25 15:56:49 2014 Geoffrey Merran
+## Last update Fri Apr 25 20:23:39 2014 Geoffrey Merran
 ##
 
 CC		= cc
@@ -25,6 +25,10 @@ SRC_CORE	= $(CORE_FOL)/main.c
 SRC_PARSER	= $(PARSER_FOL)/parser.c \
 		$(PARSER_FOL)/init_parser.c \
 		$(PARSER_FOL)/gnl.c \
+		$(PARSER_FOL)/fill_map.c \
+		$(PARSER_FOL)/type.c \
+		$(PARSER_FOL)/error.c \
+		$(PARSER_FOL)/room.c
 
 
 OBJ_CORE	= $(SRC_CORE:.c=.o)

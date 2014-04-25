@@ -5,12 +5,12 @@
 ** Login   <merran_g@epitech.net>
 **
 ** Started on  Mon Oct  7 20:58:25 2013 Geoffrey Merran
-** Last update Tue Dec  3 18:22:07 2013 Geoffrey Merran
+** Last update Fri Apr 25 16:14:17 2014 Geoffrey Merran
 */
 
 #include "my.h"
 
-int	my_str_alpha(char *str)
+int	my_str_isalpha(char *str)
 {
   int	i;
 

@@ -5,16 +5,43 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 13:59:42 2014 Geoffrey Merran
-** Last update Thu Apr 24 10:55:10 2014 Geoffrey Merran
+** Last update Fri Apr 25 20:39:56 2014 Geoffrey Merran
 */
 
 #include "main.h"
+
+void		aff_access(t_access *access)
+{
+  t_access	*tmp;
+
+  tmp = access;
+  while (tmp != NULL)
+    {
+      printf("--> Access to %s\n", tmp->name);
+      tmp = tmp->next;
+    }
+}
+
+void		aff_map(t_room *head)
+{
+  t_room	*tmp;
+
+  tmp = head;
+  printf("\n== AFFICHAGE MAP (DEBUG) ==\n\n");
+  while (tmp != NULL)
+    {
+      printf("-> Salle %s\n", tmp->name);
+      aff_access(tmp->access);
+      tmp = tmp->next;
+    }
+}
 
 void	lem_in()
 {
   t_map	*map;
 
   map = parse_lemin();
+  aff_map(map->head);
 }
 
 int	main(int ac, char **av)
