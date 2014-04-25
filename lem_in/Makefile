@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
-## Last update Thu Apr 24 17:09:39 2014 Geoffrey Merran
+## Last update Fri Apr 25 15:56:49 2014 Geoffrey Merran
 ##
 
 CC		= cc
@@ -43,6 +43,7 @@ libs:
 
 clean:
 	(cd $(LIB); make clean)
+	$(RM) $(OBJ_PARSER)
 	$(RM) $(OBJ_CORE)
 
 fclean:		clean
