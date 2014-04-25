@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Mon Apr 21 19:12:30 2014 Joris Bertomeu
-** Last update Thu Apr 24 16:56:59 2014 Geoffrey Merran
+** Last update Thu Apr 24 16:59:11 2014 Geoffrey Merran
 */
 
 #include <unistd.h>
@@ -64,7 +64,7 @@ char		*get_next_line(const int fd)
     {
       if (save == 0)
 	if ((nb_read = read(fd, buff_temp, BUF_SIZE)) <= 0)
-	  return (0);
+	  return (NULL);
       var.nb_read = nb_read;
       if (stock_buffer(&var, buff_temp, &save))
 	return (var.buffer);

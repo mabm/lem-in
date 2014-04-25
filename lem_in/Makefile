@@ -5,14 +5,14 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
-## Last update Thu Apr 24 10:51:45 2014 Geoffrey Merran
+## Last update Thu Apr 24 17:09:39 2014 Geoffrey Merran
 ##
 
 CC		= cc
 
 RM		= rm -f
 
-CFLAGS		+= -W -Wall -Wextra -pedantic -ansi -I$(INCLUDES)
+CFLAGS		+= -W -Wall -Wextra -pedantic -ansi -g3 -I$(INCLUDES)
 INCLUDES	= ./includes/
 
 NAME		= lem_in
@@ -24,6 +24,7 @@ SRC_CORE	= $(CORE_FOL)/main.c
 
 SRC_PARSER	= $(PARSER_FOL)/parser.c \
 		$(PARSER_FOL)/init_parser.c \
+		$(PARSER_FOL)/gnl.c \
 
 
 OBJ_CORE	= $(SRC_CORE:.c=.o)
