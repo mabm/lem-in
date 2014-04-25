@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 20:09:30 2014 Geoffrey Merran
-** Last update Fri Apr 25 20:27:03 2014 Geoffrey Merran
+** Last update Fri Apr 25 21:11:39 2014 Geoffrey Merran
 */
 
 #define _BSD_SOURCE
@@ -33,4 +33,27 @@ void		add_room(char **tab, t_map *map)
       map->tail = new;
     }
   map->nb_room++;
+}
+
+void		add_access(char *name, t_access **access)
+{
+  t_access	*new;
+
+  new = my_xmalloc(sizeof(*new));
+  new->name = strdup(name);
+  new->next = *access;
+  *access = new;
+}
+
+int		give_access(char *room, char *access, t_map *map)
+{
+  t_room	*tmp;
+
+  tmp = map->head;
+  while ((strcmp(tmp->name, room) != 0) && tmp != NULL)
+    tmp = tmp->next;
+  if (tmp == NULL)
+    return (0);
+  add_access(access, &(tmp->access));
+  return (1);
 }

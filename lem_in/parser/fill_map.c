@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 16:01:08 2014 Geoffrey Merran
-** Last update Fri Apr 25 20:37:50 2014 Geoffrey Merran
+** Last update Fri Apr 25 21:04:00 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -14,7 +14,7 @@ void	get_nb_ants(char **tab, int *step, t_map *map)
 {
   if (!my_str_isnum(tab[0]))
     {
-      printf("Non decimal value non-allowed : %s\n", tab[0]);
+      fprintf(stderr, "Non decimal value non-allowed : %s\n", tab[0]);
       exit(EXIT_FAILURE);
     }
   else
@@ -25,42 +25,6 @@ void	get_nb_ants(char **tab, int *step, t_map *map)
       *step = 1;
       printf("%s\n", tab[0]);
     }
-}
-
-int	is_valid_room_name(char *str)
-{
-  int	i;
-
-  if (!my_str_isalpha(str))
-    return (0);
-  if (str[0] == 'P')
-    {
-      if (strlen(str) > 1)
-	{
-	  i = 0;
-	  while (str[++i])
-	    {
-	      if (!my_isdigit(str[i]))
-		return (1);
-	    }
-	}
-      return (0);
-    }
-  return (1);
-}
-
-int		is_existing_room(char *new, t_room *list)
-{
-  t_room	*tmp;
-
-  tmp = list;
-  while (tmp != NULL)
-    {
-      if (strcmp(tmp->name, new) == 0)
-	return (1);
-      tmp = tmp->next;
-    }
-  return (0);
 }
 
 void	get_room(char **tab, int *step, t_map *map)
@@ -89,3 +53,20 @@ void	get_room(char **tab, int *step, t_map *map)
     my_error("Invalid room name (only alphanumeric and not P[number]\n");
 }
 
+void	get_access(char **tab, int *step, t_map *map)
+{
+  if (*step == 2 || *step == 3)
+    {
+      if (is_existing_room(tab[0], map->head) &&
+	  is_existing_room(tab[1], map->head))
+	{
+	  give_access(tab[0], tab[1], map);
+	  give_access(tab[1], tab[0], map);
+	}
+      else
+	my_error("Invalid rooms names : they don't exist\n");
+      *step = 3;
+    }
+  else
+    my_error("Invalid syntax : check how to build a map\n");
+}

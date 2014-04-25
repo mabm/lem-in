@@ -5,14 +5,20 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:57:57 2014 Geoffrey Merran
-** Last update Fri Apr 25 20:04:44 2014 Geoffrey Merran
+** Last update Fri Apr 25 21:31:33 2014 Geoffrey Merran
 */
 
 #include "parser.h"
 
-void	parse_command(char *buffer, int *step, t_map *map)
+int	parse_command(char *buffer, int *step, t_map *map)
 {
   printf("%s\n", buffer);
+  /* check step */
+  if (strcmp(buffer, "##start") == 0)
+    return (1);
+  if (strcmp(buffer, "##end") == 0)
+    return (2);
+  return (0);
 }
 
 void	parse_data2(char *buffer, int *step, t_map *map)
@@ -24,14 +30,15 @@ void	parse_data2(char *buffer, int *step, t_map *map)
     get_nb_ants(tab2, step, map);
   else if (my_strlen_tabs(tab2) == 2)
     {
-      
+      get_access(tab2, step, map);
+      printf("%s\n", buffer);
     }
   else
     {
-      printf("Invalid line : %s\n", buffer);
+      fprintf(stderr, "Invalid line : %s\n", buffer);
       exit(EXIT_FAILURE);
     }
-  free(tab2);
+  free_tab(tab2);
 }
 
 void	parse_data(char *buffer, int *step, t_map *map)
@@ -48,20 +55,21 @@ void	parse_data(char *buffer, int *step, t_map *map)
     }
   else
     {
-      printf("Invalid line : %s\n", buffer);
+      fprintf(stderr, "Invalid line : %s\n", buffer);
       exit(EXIT_FAILURE);
     }
-  free(tab);
+  free_tab(tab);
 }
 
-void	parse_type(int type, char *buffer, int *step, t_map *map)
+int	parse_type(int type, char *buffer, int *step, t_map *map)
 {
   if (type == COMMENTARY_TYPE)
     printf("%s\n", buffer);
   else if (type == COMMAND_TYPE)
-    parse_command(buffer, step, map);
+    return (parse_command(buffer, step, map));
   else
     parse_data(buffer, step, map);
+  return (0);
 }
 
 t_map	*parse_lemin()
@@ -70,13 +78,15 @@ t_map	*parse_lemin()
   char	*buffer;
   int	step;
   int	type;
+  int	command;
 
   init_map(&map);
   step = 0;
   while ((buffer = get_next_line(0)) != NULL)
     {
       type = get_line_type(buffer);
-      parse_type(type, buffer, &step, map);
+      command = parse_type(type, buffer, &step, map);
+      /* command à parser */
       free(buffer);
     }
   return (map);
