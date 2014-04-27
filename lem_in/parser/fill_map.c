@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 16:01:08 2014 Geoffrey Merran
-** Last update Sun Apr 27 13:52:18 2014 Geoffrey Merran
+** Last update Sun Apr 27 17:16:57 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -60,6 +60,11 @@ void	get_access(char **tab, int *step, t_map *map)
       if (is_existing_room(tab[0], map->head) &&
 	  is_existing_room(tab[1], map->head))
 	{
+	  if (strcmp(tab[0], tab[1]) == 0)
+	    my_error("Invalid rooms name : they are the same\n");
+	  if (is_access_to(tab[0], tab[1], map) ||
+	      is_access_to(tab[1], tab[0], map))
+	    my_error("Invalid rooms : have already access to eachother\n");
 	  give_access(tab[0], tab[1], map);
 	  give_access(tab[1], tab[0], map);
 	}
