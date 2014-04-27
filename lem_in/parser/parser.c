@@ -5,15 +5,15 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:57:57 2014 Geoffrey Merran
-** Last update Fri Apr 25 21:31:33 2014 Geoffrey Merran
+** Last update Sun Apr 27 13:47:03 2014 Geoffrey Merran
 */
 
 #include "parser.h"
 
-int	parse_command(char *buffer, int *step, t_map *map)
+int	parse_command(char *buffer, int *step)
 {
   printf("%s\n", buffer);
-  /* check step */
+  (void) step;
   if (strcmp(buffer, "##start") == 0)
     return (1);
   if (strcmp(buffer, "##end") == 0)
@@ -45,7 +45,7 @@ void	parse_data(char *buffer, int *step, t_map *map)
 {
   char	**tab;
 
-  tab = my_strd_to_wordtab(buffer, " ");
+  tab = my_strd_to_wordtab(buffer, " \t");
   if (my_strlen_tabs(tab) == 1)
     parse_data2(tab[0], step, map);
   else if (my_strlen_tabs(tab) == 3)
@@ -61,32 +61,32 @@ void	parse_data(char *buffer, int *step, t_map *map)
   free_tab(tab);
 }
 
-int	parse_type(int type, char *buffer, int *step, t_map *map)
+int	parse_type(t_info info, char *buffer, int *step, t_map *map)
 {
-  if (type == COMMENTARY_TYPE)
+  if (info.type == COMMENTARY_TYPE)
     printf("%s\n", buffer);
-  else if (type == COMMAND_TYPE)
-    return (parse_command(buffer, step, map));
+  else if (info.type == COMMAND_TYPE)
+    return (parse_command(buffer, step));
   else
     parse_data(buffer, step, map);
-  return (0);
+  return (info.command);
 }
 
-t_map	*parse_lemin()
+t_map		*parse_lemin()
 {
-  t_map	*map;
-  char	*buffer;
-  int	step;
-  int	type;
-  int	command;
+  t_map		*map;
+  char		*buffer;
+  int		step;
+  t_info	info;
 
   init_map(&map);
   step = 0;
+  info.command = 0;
   while ((buffer = get_next_line(0)) != NULL)
     {
-      type = get_line_type(buffer);
-      command = parse_type(type, buffer, &step, map);
-      /* command à parser */
+      info.type = get_line_type(buffer);
+      info.command = parse_type(info, buffer, &step, map);
+      info.command = get_command(info.command, step, map);
       free(buffer);
     }
   return (map);

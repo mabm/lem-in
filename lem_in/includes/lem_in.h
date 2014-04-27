@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:58:46 2014 Geoffrey Merran
-** Last update Fri Apr 25 20:17:53 2014 Geoffrey Merran
+** Last update Sun Apr 27 13:44:21 2014 Geoffrey Merran
 */
 
 #ifndef LEM_IN_
@@ -35,5 +35,11 @@ typedef struct	s_map
   t_room	*head;
   t_room	*tail;
 }		t_map;
+
+typedef struct	s_info
+{
+  int		type;
+  int		command;
+}		t_info;
 
 #endif /* LEM_IN_ */

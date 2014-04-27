@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 20:09:30 2014 Geoffrey Merran
-** Last update Fri Apr 25 21:11:39 2014 Geoffrey Merran
+** Last update Sun Apr 27 13:33:15 2014 Geoffrey Merran
 */
 
 #define _BSD_SOURCE
@@ -16,7 +16,7 @@ void		add_room(char **tab, t_map *map)
   t_room	*new;
 
   new = my_xmalloc(sizeof(*new));
-  new->val = 0;
+  new->val = -1;
   new->name = strdup(tab[0]);
   new->access = NULL;
   new->next = NULL;

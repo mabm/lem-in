@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 15:02:56 2014 Geoffrey Merran
-** Last update Fri Apr 25 21:24:58 2014 Geoffrey Merran
+** Last update Sun Apr 27 13:47:18 2014 Geoffrey Merran
 */
 
 #ifndef PARSER_
@@ -47,7 +47,7 @@ int	get_line_type(char *buffer);
 void	get_nb_ants(char **tab, int *step, t_map *map);
 void	get_room(char **tab, int *step, t_map *map);
 void	get_access(char **tab, int *step, t_map *map);
-
+int	get_command(int command, int step, t_map *map);
 
 /*
 ** Operation in list 
@@ -73,10 +73,10 @@ void	free_tab(char **tab);
 ** Parsing
 */
 
-int	parse_command(char *buffer, int *step, t_map *map);
+int	parse_command(char *buffer, int *step);
 void	parse_data2(char *buffer, int *step, t_map *map);
 void	parse_data(char *buffer, int *step, t_map *map);
-int	parse_type(int type, char *buffer, int *step, t_map *map);
+int	parse_type(t_info info, char *buffer, int *step, t_map *map);
 t_map	*parse_lemin();
 
 #endif /* PARSER_ */
