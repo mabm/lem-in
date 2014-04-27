@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 13:59:42 2014 Geoffrey Merran
-** Last update Fri Apr 25 21:28:36 2014 Geoffrey Merran
+** Last update Sun Apr 27 13:02:19 2014 Nicolas Ades
 */
 
 #include "main.h"
@@ -46,6 +46,7 @@ void	lem_in()
   t_map	*map;
 
   map = parse_lemin();
+  /* launch_fct(map); */
   aff_map(map);
 }
 
