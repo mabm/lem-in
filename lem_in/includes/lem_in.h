@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:58:46 2014 Geoffrey Merran
-** Last update Sun Apr 27 13:44:21 2014 Geoffrey Merran
+** Last update Sun Apr 27 16:44:54 2014 Jeremy Mediavilla
 */
 
 #ifndef LEM_IN_
@@ -41,5 +41,7 @@ typedef struct	s_info
   int		type;
   int		command;
 }		t_info;
+
+void		find_short_way(t_map *);
 
 #endif /* LEM_IN_ */

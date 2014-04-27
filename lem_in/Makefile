@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
-## Last update Sun Apr 27 13:52:53 2014 Geoffrey Merran
+## Last update Sun Apr 27 16:39:25 2014 Jeremy Mediavilla
 ##
 
 CC		= cc
@@ -20,7 +20,8 @@ NAME		= lem_in
 CORE_FOL	= core/
 PARSER_FOL	= parser/
 
-SRC_CORE	= $(CORE_FOL)/main.c
+SRC_CORE	= $(CORE_FOL)/main.c	\
+		$(CORE_FOL)/core.c	\
 
 SRC_PARSER	= $(PARSER_FOL)/parser.c \
 		$(PARSER_FOL)/init_parser.c \
