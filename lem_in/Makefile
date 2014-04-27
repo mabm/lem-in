@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
-## Last update Sun Apr 27 16:39:25 2014 Jeremy Mediavilla
+## Last update Sun Apr 27 17:12:39 2014 Geoffrey Merran
 ##
 
 CC		= cc
@@ -29,6 +29,7 @@ SRC_PARSER	= $(PARSER_FOL)/parser.c \
 		$(PARSER_FOL)/fill_map.c \
 		$(PARSER_FOL)/fill_map2.c \
 		$(PARSER_FOL)/type.c \
+		$(PARSER_FOL)/type2.c \
 		$(PARSER_FOL)/error.c \
 		$(PARSER_FOL)/room.c \
 		$(PARSER_FOL)/free.c

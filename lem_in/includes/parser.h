@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 15:02:56 2014 Geoffrey Merran
-** Last update Sun Apr 27 14:05:48 2014 Geoffrey Merran
+** Last update Sun Apr 27 17:10:25 2014 Geoffrey Merran
 */
 
 #ifndef PARSER_
@@ -39,6 +39,7 @@ int	is_command(char *buffer);
 int	is_commentary(char *buffer);
 int	is_valid_room_name(char *str);
 int    	is_existing_room(char *new, t_room *list);
+int	is_access_to(char *room, char *access, t_map *map);
 int	get_line_type(char *buffer);
 
 /*
