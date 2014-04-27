@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 13:59:42 2014 Geoffrey Merran
-** Last update Sun Apr 27 16:52:15 2014 Jeremy Mediavilla
+** Last update Sun Apr 27 17:55:00 2014 Jeremy Mediavilla
 */
 
 #include "main.h"
@@ -46,7 +46,6 @@ void	lem_in()
   t_map	*map;
 
   map = parse_lemin();
-  /* launch_fct(map); */
   aff_map(map);
   find_short_way(map);
 }
