@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 15:02:56 2014 Geoffrey Merran
-** Last update Sun Apr 27 13:47:18 2014 Geoffrey Merran
+** Last update Sun Apr 27 14:05:48 2014 Geoffrey Merran
 */
 
 #ifndef PARSER_
@@ -22,6 +22,7 @@
 */
 
 void	init_map(t_map **map);
+void	is_valid_map(t_map *map);
 
 /*
 ** Check type
@@ -48,6 +49,8 @@ void	get_nb_ants(char **tab, int *step, t_map *map);
 void	get_room(char **tab, int *step, t_map *map);
 void	get_access(char **tab, int *step, t_map *map);
 int	get_command(int command, int step, t_map *map);
+void	get_start(int step, t_map *map);
+void	get_end(int step, t_map *map);
 
 /*
 ** Operation in list 

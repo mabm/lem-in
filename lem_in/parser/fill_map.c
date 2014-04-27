@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 16:01:08 2014 Geoffrey Merran
-** Last update Sun Apr 27 13:32:04 2014 Geoffrey Merran
+** Last update Sun Apr 27 13:52:18 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -69,28 +69,6 @@ void	get_access(char **tab, int *step, t_map *map)
     }
   else
     my_error("Invalid syntax : check how to build a map\n");
-}
-
-void	get_start(int step, t_map *map)
-{
-  if (map->start != NULL)
-    my_error("Invalid start : already one\n");
-  if (step != 2)
-    my_error("Invalid syntax : check how to build a map\n");
-  if (map->tail == NULL)
-    my_error("Invalid room (intern problem) : not found in list\n");
-  map->start = map->tail;
-}
-
-void	get_end(int step, t_map *map)
-{
-  if (map->end != NULL)
-    my_error("Invalid end : already one\n");
-  if (step != 2)
-    my_error("Invalid syntax : check how to build a map\n");
-  if (map->tail == NULL)
-    my_error("Invalid room (intern problem) : not found in list\n");
-  map->end = map->tail;
 }
 
 int	get_command(int command, int step, t_map *map)

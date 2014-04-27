@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:57:57 2014 Geoffrey Merran
-** Last update Sun Apr 27 13:47:03 2014 Geoffrey Merran
+** Last update Sun Apr 27 14:02:08 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -26,6 +26,8 @@ void	parse_data2(char *buffer, int *step, t_map *map)
   char	**tab2;
 
   tab2 = my_strd_to_wordtab(buffer, "-");
+  if (tab2 == NULL)
+    my_error("Empty line : check how to build a map\n");
   if (my_strlen_tabs(tab2) == 1)
     get_nb_ants(tab2, step, map);
   else if (my_strlen_tabs(tab2) == 2)
@@ -46,6 +48,8 @@ void	parse_data(char *buffer, int *step, t_map *map)
   char	**tab;
 
   tab = my_strd_to_wordtab(buffer, " \t");
+  if (tab == NULL)
+    my_error("Invalid/Empty line : check how to build a map\n");
   if (my_strlen_tabs(tab) == 1)
     parse_data2(tab[0], step, map);
   else if (my_strlen_tabs(tab) == 3)
@@ -89,5 +93,6 @@ t_map		*parse_lemin()
       info.command = get_command(info.command, step, map);
       free(buffer);
     }
+  is_valid_map(map);
   return (map);
 }
