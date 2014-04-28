@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Sun Apr 27 18:38:23 2014 Jeremy Mediavilla
+** Last update Mon Apr 28 16:26:23 2014 Jeremy Mediavilla
 */
 
 #include "lem_in.h"
@@ -44,6 +44,39 @@ void		aff_path(t_access *path)
   my_putchar('\n');
 }
 
+int		nbr_of_access(t_map *map, char *room_name)
+{
+  int		i;
+  t_room	*tmp;
+
+  i = 0;
+  tmp = find_room(map, room_name);
+  while (tmp->access != NULL)
+    {
+      i++;
+      tmp->access = tmp->access->next;
+    }
+  return (i);
+}
+
+int		nbr_of_uninitialized_access(t_map *map, char *room_name)
+{
+  int		i;
+  t_room	*tmp;
+  t_room	*to_check;
+
+  i = 0;
+  tmp = find_room(map, room_name);
+  while (tmp->access != NULL)
+    {
+      to_check = find_room(map, tmp->access->name);
+      if (to_check->val == -1)
+	i++;
+      tmp->access = tmp->access->next;
+    }
+  return (i);
+}
+
 void		travel_rooms(t_map *map, char *room_name, t_access *path)
 {
   t_room	*tmp;
@@ -55,6 +88,7 @@ void		travel_rooms(t_map *map, char *room_name, t_access *path)
   while (tmp->access != NULL)
     {
       printf("--%s\n", tmp->access->name);
+      /* travel_rooms(map, tmp->access->name, path); */
       tmp->access = tmp->access->next;
     }
 }
