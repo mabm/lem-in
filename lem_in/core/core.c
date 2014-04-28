@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Mon Apr 28 16:26:23 2014 Jeremy Mediavilla
+** Last update Mon Apr 28 19:30:13 2014 Jeremy Mediavilla
 */
 
 #include "lem_in.h"
@@ -77,36 +77,44 @@ int		nbr_of_uninitialized_access(t_map *map, char *room_name)
   return (i);
 }
 
-void		travel_rooms(t_map *map, char *room_name, t_access *path)
+void		aff_tiret(int val)
 {
-  t_room	*tmp;
+  int		i;
 
-  add_access(room_name, &path);
-  /* aff_path(path); */
-  printf("--Rooms linked to %s :\n", room_name);
-  tmp = find_room(map, room_name);
-  while (tmp->access != NULL)
+  i = 0;
+  while (i < val)
     {
-      printf("--%s\n", tmp->access->name);
-      /* travel_rooms(map, tmp->access->name, path); */
-      tmp->access = tmp->access->next;
+      my_putchar('-');
+      i++;
+    }
+}
+
+void		travel_rooms(t_map *map, t_room *current, int value)
+{
+  t_room	*access;
+  t_access	*tmp;
+
+  tmp = current->access;
+  if (current == map->end)
+    printf("(END)\n");
+  while (tmp != NULL && current != map->end)
+    {
+      access = find_room(map, tmp->name);
+      /* printf("room : %s %i > %i ?\n", access->name, access->val, value); */
+      if (access->val == -1 || access->val > value)
+	{
+	  access->val = value;
+	  aff_tiret(value);
+	  printf("%s [%i]\n", tmp->name, access->val);
+	  travel_rooms(map, access, (value + 1));
+	}
+      tmp = tmp->next;
     }
 }
 
 void		find_short_way(t_map *map)
 {
-  t_room	*tmp;
-  t_access	*path;
-
-  path = NULL;
-  tmp = map->start;
-  printf("\nrooms linked to room %s (start)\n", tmp->name);
-  tmp->val = 0;
-  while (tmp->access != NULL)
-    {
-      printf("-%s\n", tmp->access->name);
-      tmp->val = 1;
-      travel_rooms(map, tmp->access->name, path);
-      tmp->access = tmp->access->next;
-    }
+  printf("\n%s (start)\n", map->start->name);
+  map->start->val = 0;
+  travel_rooms(map, map->start, 1);
 }

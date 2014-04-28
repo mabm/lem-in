@@ -10,6 +10,8 @@ G 6 6
 ##end
 H 7 7
 I 8 8
+J 9 9
+K 10 10
 A-B
 A-C
 A-D
@@ -19,3 +21,8 @@ E-H
 D-G
 G-I
 I-H
+F-J
+J-D
+B-K
+E-K
+K-H
