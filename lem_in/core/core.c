@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Mon Apr 28 19:30:13 2014 Jeremy Mediavilla
+** Last update Tue Apr 29 12:40:48 2014 Jeremy Mediavilla
 */
 
 #include "lem_in.h"
@@ -59,24 +59,6 @@ int		nbr_of_access(t_map *map, char *room_name)
   return (i);
 }
 
-int		nbr_of_uninitialized_access(t_map *map, char *room_name)
-{
-  int		i;
-  t_room	*tmp;
-  t_room	*to_check;
-
-  i = 0;
-  tmp = find_room(map, room_name);
-  while (tmp->access != NULL)
-    {
-      to_check = find_room(map, tmp->access->name);
-      if (to_check->val == -1)
-	i++;
-      tmp->access = tmp->access->next;
-    }
-  return (i);
-}
-
 void		aff_tiret(int val)
 {
   int		i;
@@ -100,7 +82,6 @@ void		travel_rooms(t_map *map, t_room *current, int value)
   while (tmp != NULL && current != map->end)
     {
       access = find_room(map, tmp->name);
-      /* printf("room : %s %i > %i ?\n", access->name, access->val, value); */
       if (access->val == -1 || access->val > value)
 	{
 	  access->val = value;
@@ -112,9 +93,28 @@ void		travel_rooms(t_map *map, t_room *current, int value)
     }
 }
 
+void		room_backtracking(t_map *map)
+{
+  t_access	*shortway;
+  t_room	*current;
+
+  shortway = NULL;
+  current = map->end;
+  while (current != map->start)
+    {
+      while (get_room_value(map, current->access->name) != (current->val - 1))
+	current->access = current->access->next;
+      add_access(current->name, &shortway);
+      current = find_room(map, current->access->name);
+    }
+  add_access(map->start->name, &shortway);
+  aff_path(shortway);
+}
+
 void		find_short_way(t_map *map)
 {
   printf("\n%s (start)\n", map->start->name);
   map->start->val = 0;
   travel_rooms(map, map->start, 1);
+  room_backtracking(map);
 }
