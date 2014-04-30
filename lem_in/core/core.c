@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Wed Apr 30 08:36:14 2014 Geoffrey Merran
+** Last update Wed Apr 30 08:44:31 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -78,8 +78,9 @@ void		travel_rooms(t_map *map, t_room *current, int value)
   t_access	*tmp;
 
   tmp = current->access;
-  /* if (current == map->end) */
-  /*   printf("(END)\n"); */
+  if (current == map->end)
+    printf(" (END)");
+  printf("\n");
   while (tmp != NULL && current != map->end)
     {
       access = find_room(map, tmp->name);
@@ -87,7 +88,7 @@ void		travel_rooms(t_map *map, t_room *current, int value)
 	{
 	  access->val = value;
 	  aff_tiret(value);
-	  printf("%s [%i]\n", tmp->name, access->val);
+	  printf("%s [%i]", tmp->name, access->val);
 	  travel_rooms(map, access, (value + 1));
 	}
       tmp = tmp->next;
@@ -114,7 +115,7 @@ void		room_backtracking(t_map *map)
 
 void		find_short_way(t_map *map)
 {
-  printf("\n%s (start)\n", map->start->name);
+  printf("\n%s (start)", map->start->name);
   map->start->val = 0;
   travel_rooms(map, map->start, 1);
   room_backtracking(map);
