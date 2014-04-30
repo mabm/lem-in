@@ -1,3 +1,4 @@
+
 /*
 ** type.c for type in /home/merran_g/work/c_elem/lem-in/lem_in/parser
 ** 
@@ -5,7 +6,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 16:00:00 2014 Geoffrey Merran
-** Last update Fri Apr 25 20:46:35 2014 Geoffrey Merran
+** Last update Wed Apr 30 08:14:48 2014 Geoffrey Merran
 */
 
 #include "parser.h"

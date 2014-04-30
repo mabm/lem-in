@@ -5,11 +5,10 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Tue Apr 29 12:40:48 2014 Jeremy Mediavilla
+** Last update Wed Apr 30 08:11:08 2014 Geoffrey Merran
 */
 
-#include "lem_in.h"
-#include "main.h"
+#include "core.h"
 
 t_room		*find_room(t_map *map, char *room_name)
 {
