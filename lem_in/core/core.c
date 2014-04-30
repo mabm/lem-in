@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Wed Apr 30 08:11:08 2014 Geoffrey Merran
+** Last update Wed Apr 30 08:36:14 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -62,12 +62,14 @@ void		aff_tiret(int val)
 {
   int		i;
 
-  i = 0;
-  while (i < val)
+  i = -1;
+  while (++i < val)
     {
-      my_putchar('-');
-      i++;
+      my_putchar('|');
+      if ((i + 1) != val)
+	my_putchar(' ');
     }
+  my_putstr("__");
 }
 
 void		travel_rooms(t_map *map, t_room *current, int value)
@@ -76,8 +78,8 @@ void		travel_rooms(t_map *map, t_room *current, int value)
   t_access	*tmp;
 
   tmp = current->access;
-  if (current == map->end)
-    printf("(END)\n");
+  /* if (current == map->end) */
+  /*   printf("(END)\n"); */
   while (tmp != NULL && current != map->end)
     {
       access = find_room(map, tmp->name);
