@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Wed Apr 30 08:44:31 2014 Geoffrey Merran
+** Last update Wed Apr 30 09:01:26 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -100,6 +100,8 @@ void		room_backtracking(t_map *map)
   t_access	*shortway;
   t_room	*current;
 
+  if (map->end->val == -1)
+    my_error(" ~ Error : No solution has been found to go outside ~\n");
   shortway = NULL;
   current = map->end;
   while (current != map->start)
