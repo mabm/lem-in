@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Wed Apr 30 09:01:26 2014 Geoffrey Merran
+** Last update Fri May  2 09:27:32 2014 Jeremy Mediavilla
 */
 
 #include "core.h"
@@ -52,8 +52,8 @@ int		nbr_of_access(t_map *map, char *room_name)
   tmp = find_room(map, room_name);
   while (tmp->access != NULL)
     {
-      i++;
       tmp->access = tmp->access->next;
+      i++;
     }
   return (i);
 }
@@ -95,30 +95,31 @@ void		travel_rooms(t_map *map, t_room *current, int value)
     }
 }
 
-void		room_backtracking(t_map *map)
+void		room_backtracking(t_map *map, t_access **shortway)
 {
-  t_access	*shortway;
   t_room	*current;
 
   if (map->end->val == -1)
     my_error(" ~ Error : No solution has been found to go outside ~\n");
-  shortway = NULL;
   current = map->end;
   while (current != map->start)
     {
       while (get_room_value(map, current->access->name) != (current->val - 1))
 	current->access = current->access->next;
-      add_access(current->name, &shortway);
+      add_access(current->name, shortway);
       current = find_room(map, current->access->name);
     }
-  add_access(map->start->name, &shortway);
-  aff_path(shortway);
+  add_access(map->start->name, shortway);
 }
 
 void		find_short_way(t_map *map)
 {
+  t_access	*shortway;
+
+  shortway = NULL;
   printf("\n%s (start)", map->start->name);
   map->start->val = 0;
   travel_rooms(map, map->start, 1);
-  room_backtracking(map);
+  room_backtracking(map, &shortway);
+  aff_path(shortway);
 }
