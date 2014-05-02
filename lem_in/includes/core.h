@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Wed Apr 30 08:10:21 2014 Geoffrey Merran
-** Last update Fri May  2 18:40:57 2014 Geoffrey Merran
+** Last update Fri May  2 19:19:26 2014 Geoffrey Merran
 */
 
 #ifndef CORE_
@@ -14,9 +14,27 @@
 # include "parser.h"
 # include "debug.h"
 
-void		find_short_way(t_map *);
-void		aff_access(t_access *);
-void		remove_last_access(t_access **);
+/*
+** Finds ways to end
+*/
+
+t_path		*find_ways(t_map *map);
+void		travel_rooms(t_map *map, t_room *current, int value, t_path *path);
+t_room		*find_room(t_map *map, char *room_name);
+void		init_path(t_path **path);
 void		get_path(t_path *path, int size_path);
+void		fill_path(char ***path, t_access *access);
+void		remove_last_access(t_access **access);
+
+
+/*
+** Push ants to the end
+*/
+
+/*
+** Lem_in
+*/
+
+void	lem_in();
 
 #endif /* CORE_ */

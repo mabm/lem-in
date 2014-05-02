@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Fri May  2 18:44:38 2014 Geoffrey Merran
+** Last update Fri May  2 19:15:38 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -59,7 +59,7 @@ void		init_path(t_path **path)
   (*path)->way = NULL;
 }
 
-void		find_short_way(t_map *map)
+t_path		*find_ways(t_map *map)
 {
   t_path	*path;
 
@@ -71,4 +71,5 @@ void		find_short_way(t_map *map)
   if (path->way == NULL)
     my_error("~ Error : there are no way found to the final room ~\n");
   aff_way(path->way);
+  return (path);
 }

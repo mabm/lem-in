@@ -5,18 +5,18 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 13:59:42 2014 Geoffrey Merran
-** Last update Fri May  2 18:37:29 2014 Geoffrey Merran
+** Last update Fri May  2 19:20:28 2014 Geoffrey Merran
 */
 
 #include "main.h"
 
-void	lem_in()
+void		lem_in()
 {
-  t_map	*map;
+  t_map		*map;
+  t_path	*path;
 
   map = parse_lemin();
-  aff_map(map);
-  find_short_way(map);
+  path = find_ways(map);
 }
 
 int	main(int ac, char **av)

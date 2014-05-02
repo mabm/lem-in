@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Fri May  2 16:06:34 2014 Jeremy Mediavilla
-** Last update Fri May  2 18:07:34 2014 Jeremy Mediavilla
+** Last update Fri May  2 19:05:52 2014 Geoffrey Merran
 */
 
 #define _BSD_SOURCE
@@ -14,7 +14,7 @@
 void		remove_last_access(t_access **access)
 {
   t_access	*tmp;
-  
+
   if (access != NULL)
     {
       tmp = (*access)->next;
@@ -51,6 +51,6 @@ void		get_path(t_path *path, int size_path)
   new->next = path->way;
   new->prev = NULL;
   if (path->way != NULL)
-    path->way->prev = new; 
+    path->way->prev = new;
   path->way = new;
 }

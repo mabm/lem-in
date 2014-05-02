@@ -5,7 +5,7 @@
 ## Login   <merran_g@epitech.net>
 ## 
 ## Started on  Tue Apr 22 14:21:02 2014 Geoffrey Merran
-## Last update Fri May  2 18:41:18 2014 Geoffrey Merran
+## Last update Fri May  2 19:20:09 2014 Geoffrey Merran
 ##
 
 CC		= cc
@@ -21,7 +21,7 @@ CORE_FOL	= core/
 PARSER_FOL	= parser/
 
 SRC_CORE	= $(CORE_FOL)/main.c	\
-		$(CORE_FOL)/core.c	\
+		$(CORE_FOL)/ways.c	\
 		$(CORE_FOL)/path.c	\
 		$(CORE_FOL)/debug.c	\
 
