@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Fri May  2 16:06:34 2014 Jeremy Mediavilla
-** Last update Fri May  2 19:05:52 2014 Geoffrey Merran
+** Last update Fri May  2 19:48:51 2014 Geoffrey Merran
 */
 
 #define _BSD_SOURCE
@@ -40,6 +40,31 @@ void		fill_path(char ***path, t_access *access)
   (*path)[i] = NULL;
 }
 
+void		put_in_path(t_way **ways, t_way *new)
+{
+  t_way		*tmp;
+  int		sort;
+
+  tmp = *ways;
+  sort = 0;
+  while (sort == 0 && tmp != NULL)
+    {
+      if (new->size <= tmp->size)
+	sort = 1;
+      tmp = tmp->next;
+    }
+  new->next = *ways;
+  if (*ways != NULL)
+    {
+      new->prev = (*ways)->prev;
+      (*ways)->prev = new;
+    }
+  else
+    new->prev = NULL;
+  if (new->prev == NULL)
+    *ways = new;
+}
+
 void		get_path(t_path *path, int size_path)
 {
   t_way		*new;
@@ -48,9 +73,5 @@ void		get_path(t_path *path, int size_path)
   new->path = my_xmalloc((size_path + 1) * sizeof(char *));
   new->size = size_path;
   fill_path(&new->path, path->access);
-  new->next = path->way;
-  new->prev = NULL;
-  if (path->way != NULL)
-    path->way->prev = new;
-  path->way = new;
+  put_in_path(&path->way, new);
 }
