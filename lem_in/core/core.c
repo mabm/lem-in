@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Fri May  2 09:27:32 2014 Jeremy Mediavilla
+** Last update Fri May  2 14:03:27 2014 Jeremy Mediavilla
 */
 
 #include "core.h"
@@ -43,16 +43,15 @@ void		aff_path(t_access *path)
   my_putchar('\n');
 }
 
-int		nbr_of_access(t_map *map, char *room_name)
+int		nbr_of_access(t_map *map, t_room *room)
 {
   int		i;
-  t_room	*tmp;
 
+  (void)map;
   i = 0;
-  tmp = find_room(map, room_name);
-  while (tmp->access != NULL)
+  while (room->access != NULL)
     {
-      tmp->access = tmp->access->next;
+      room->access = room->access->next;
       i++;
     }
   return (i);
@@ -112,14 +111,75 @@ void		room_backtracking(t_map *map, t_access **shortway)
   add_access(map->start->name, shortway);
 }
 
+/* t_access	*room_backtracking2(t_map *map) */
+/* { */
+/*   t_room	*current; */
+/*   t_access	*way; */
+/*   int		val; */
+/*   int		tmp_val; */
+/*   t_access	*tmp; */
+/*   t_access	*tmp2; */
+
+/*   way = NULL; */
+/*   if (map->end->val == -1) */
+/*     my_error(" ~ Error : No solution has been found to go outside ~\n"); */
+/*   current = map->end; */
+/*   aff_access(current->access); */
+/*   printf("DEBUG\n"); */
+/*   tmp = current->access; */
+/*   tmp2 = current->access; */
+/*   val = current->val; */
+/*   while (tmp2 != NULL) */
+/*     { */
+/*       if ((tmp_val = get_room_value(map, tmp2->name)) < val && tmp_val != -1) */
+/*       	{ */
+/*       	  val = tmp_val; */
+/*       	  tmp = tmp2; */
+/*       	} */
+/*       tmp2 = tmp2->next; */
+/*     } */
+/*   if (tmp != NULL) */
+/*     printf("[%s : %i]\n", tmp->name, val); */
+/*   current = find_room(map, tmp->name); */
+/*   while (current != map->start) */
+/*     { */
+/*       while (get_room_value(map, current->access->name) != (current->val - 1)) */
+/* 	current->access = current->access->next; */
+/*       /\* current->val = -1; *\/ */
+/*       add_access(current->name,&way); */
+/*       current = find_room(map, current->access->name); */
+/*     } */
+/*   add_access(map->start->name, &way); */
+/*   return (way); */
+/* } */
+
 void		find_short_way(t_map *map)
 {
   t_access	*shortway;
+  int		nbr_ways;
+  t_access	**ways;
+  int		i;
 
+  i = 0;
   shortway = NULL;
   printf("\n%s (start)", map->start->name);
   map->start->val = 0;
   travel_rooms(map, map->start, 1);
   room_backtracking(map, &shortway);
+  /* nbr_ways = nbr_of_access(map, map->end); */
+  nbr_ways = 3;
   aff_path(shortway);
+  (void)ways;
+  (void)i;
+  (void)nbr_ways;
+  /* ways = malloc(nbr_ways * sizeof(t_access *)); */
+  /* ways[i] = room_backtracking2(map); */
+  /* i++; */
+  /* while (i < nbr_ways) */
+  /*   { */
+  /*     ways[i] = room_backtracking2(map); */
+  /*     if (ways[i] != NULL) */
+  /* 	aff_path(ways[i]); */
+  /*     i++; */
+  /*   } */
 }

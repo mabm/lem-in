@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Wed Apr 30 08:10:21 2014 Geoffrey Merran
-** Last update Wed Apr 30 08:11:19 2014 Geoffrey Merran
+** Last update Fri May  2 11:54:00 2014 Jeremy Mediavilla
 */
 
 #ifndef CORE_
@@ -14,5 +14,6 @@
 # include "parser.h"
 
 void		find_short_way(t_map *);
+void		aff_access(t_access *);
 
 #endif /* CORE_ */
