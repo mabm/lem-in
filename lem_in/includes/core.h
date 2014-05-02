@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Wed Apr 30 08:10:21 2014 Geoffrey Merran
-** Last update Fri May  2 11:54:00 2014 Jeremy Mediavilla
+** Last update Fri May  2 17:55:58 2014 Jeremy Mediavilla
 */
 
 #ifndef CORE_
@@ -15,5 +15,7 @@
 
 void		find_short_way(t_map *);
 void		aff_access(t_access *);
+void		remove_last_access(t_access **);
+void		get_path(t_path *path, int size_path);
 
 #endif /* CORE_ */
