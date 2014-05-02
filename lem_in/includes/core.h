@@ -5,13 +5,14 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Wed Apr 30 08:10:21 2014 Geoffrey Merran
-** Last update Fri May  2 17:55:58 2014 Jeremy Mediavilla
+** Last update Fri May  2 18:40:57 2014 Geoffrey Merran
 */
 
 #ifndef CORE_
 # define CORE_
 # include "lem_in.h"
 # include "parser.h"
+# include "debug.h"
 
 void		find_short_way(t_map *);
 void		aff_access(t_access *);
