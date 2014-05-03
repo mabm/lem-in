@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 13:59:42 2014 Geoffrey Merran
-** Last update Sat May  3 17:54:26 2014 Jeremy Mediavilla
+** Last update Sat May  3 18:03:48 2014 Jeremy Mediavilla
 */
 
 #include "main.h"
@@ -30,7 +30,7 @@ void		lem_in()
   map = parse_lemin();
   path = find_ways(map);
   reinit_map_vals(map);
-  lem_in_take_a_selfie(path, map->nb_ants);
+  /* lem_in_take_a_selfie(path, map->nb_ants); */
 }
 
 int	main(int ac, char **av)
