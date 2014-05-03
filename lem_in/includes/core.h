@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Wed Apr 30 08:10:21 2014 Geoffrey Merran
-** Last update Fri May  2 19:19:26 2014 Geoffrey Merran
+** Last update Sat May  3 17:09:34 2014 Jeremy Mediavilla
 */
 
 #ifndef CORE_
@@ -25,7 +25,7 @@ void		init_path(t_path **path);
 void		get_path(t_path *path, int size_path);
 void		fill_path(char ***path, t_access *access);
 void		remove_last_access(t_access **access);
-
+void		lem_in_take_a_selfie(t_path *, int);
 
 /*
 ** Push ants to the end
