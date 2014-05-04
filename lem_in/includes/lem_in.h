@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:58:46 2014 Geoffrey Merran
-** Last update Wed Apr 30 08:13:57 2014 Geoffrey Merran
+** Last update Fri May  2 16:29:32 2014 Jeremy Mediavilla
 */
 
 #ifndef LEM_IN_
@@ -44,10 +44,16 @@ typedef struct	s_info
 
 typedef struct	s_way
 {
-  t_access	*path;
+  char		**path;
   int		size;
   struct s_way	*next;
   struct s_way	*prev;
 }		t_way;
+
+typedef struct	s_path
+{
+  t_access	*access;
+  t_way		*way;
+}		t_path;
 
 #endif /* LEM_IN_ */
