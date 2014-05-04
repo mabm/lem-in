@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Wed Apr 30 08:10:21 2014 Geoffrey Merran
-** Last update Fri May  2 19:19:26 2014 Geoffrey Merran
+** Last update Fri May  2 19:54:52 2014 Geoffrey Merran
 */
 
 #ifndef CORE_
@@ -24,6 +24,7 @@ t_room		*find_room(t_map *map, char *room_name);
 void		init_path(t_path **path);
 void		get_path(t_path *path, int size_path);
 void		fill_path(char ***path, t_access *access);
+void		put_in_path(t_way **ways, t_way *new);
 void		remove_last_access(t_access **access);
 
 
