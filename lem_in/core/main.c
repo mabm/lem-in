@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May  4 15:13:29 2014 Geoffrey Merran
-** Last update Sun May  4 15:13:32 2014 Geoffrey Merran
+** Last update Sun May  4 16:15:28 2014 Geoffrey Merran
 */
 
 #include "main.h"
@@ -20,6 +20,7 @@ void		reinit_map_vals(t_map *map)
       tmp->val = 0;
       tmp = tmp->next;
     }
+  map->start->val = map->nb_ants;
 }
 
 void		lem_in()

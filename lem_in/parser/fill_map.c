@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 16:01:08 2014 Geoffrey Merran
-** Last update Fri May  2 18:53:50 2014 Geoffrey Merran
+** Last update Sun May  4 15:16:06 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -61,10 +61,10 @@ void	get_access(char **tab, int *step, t_map *map)
 	  is_existing_room(tab[1], map->head))
 	{
 	  if (strcmp(tab[0], tab[1]) == 0)
-	    printf("Warning : Room has a circular access -> ");
+	    my_puterr("Warning : Room has a circular access -> ");
 	  else if (is_access_to(tab[0], tab[1], map) ||
 	      is_access_to(tab[1], tab[0], map))
-	    printf("Warning : Rooms already to access eachothers -> ");
+	    my_puterr("Warning : Rooms already to access eachothers -> ");
 	  else
 	    {
 	      give_access(tab[0], tab[1], map);

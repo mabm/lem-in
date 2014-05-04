@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Fri May  2 19:15:38 2014 Geoffrey Merran
+** Last update Sun May  4 16:01:06 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -31,19 +31,13 @@ void		travel_rooms(t_map *map, t_room *current, int value, t_path *path)
 
   tmp = current->access;
   if (current == map->end)
-    {
-      get_path(path, value);
-      printf(" (END)");
-    }
-  printf("\n");
+    get_path(path, value);
   while (tmp != NULL && current != map->end)
     {
       access = find_room(map, tmp->name);
       if (access->val == -1 || access->val > value)
 	{
 	  access->val = value;
-	  aff_tiret(value);
-	  printf("%s [%i]", tmp->name, access->val);
 	  add_access(tmp->name, &path->access);
 	  travel_rooms(map, access, (value + 1), path);
 	  remove_last_access(&path->access);
@@ -65,7 +59,6 @@ t_path		*find_ways(t_map *map)
 
   init_path(&path);
   add_access(map->start->name, &path->access);
-  printf("\n%s (start)", map->start->name);
   map->start->val = 0;
   travel_rooms(map, map->start, 1, path);
   if (path->way == NULL)

@@ -5,10 +5,38 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sat May  3 17:00:36 2014 Jeremy Mediavilla
-** Last update Sat May  3 18:03:11 2014 Jeremy Mediavilla
+** Last update Sun May  4 16:19:12 2014 Geoffrey Merran
 */
 
 #include "core.h"
+
+void		move_next_room(t_map *map, t_ant *ant)
+{
+  t_room	*tmp;
+  t_room	*cur;
+
+  if (ant->room != 0)
+    {
+      cur = find_room(map, ant->wat->path[ant->room]);
+      tmp = find_room(map, ant->way->path[ant->room - 1]);
+      if (tmp->val == 0 || tmp == map->end)
+	{
+	  cur->val = 0;
+	  if (tmp == map->end)
+	    map->end->val = map->end->val + 1;
+	  else
+	    tmp->val = ant->id;
+	  ant->room--;
+	  printf("P%d-%s ", ant->id, tmp->name);
+	}
+    }
+}
+
+void	lem_in_take_a_selfie()
+{
+
+
+}
 
 int		nbr_of_ways(t_path *path)
 {
@@ -23,38 +51,4 @@ int		nbr_of_ways(t_path *path)
       tmp = tmp->next;
     }
   return (i);
-}
-
-void		lem_in_take_a_selfie(t_path *path, int nb_ants)
-{
-  int		size;
-  int		i;
-  int		tmp;
-
-  tmp = 0;
-  size = nbr_of_ways(path);
-  printf("TEKASS MERRAN JE FAIS DES TEST\n\n");
-  while (nb_ants > 0)
-    {
-      if (size > 1)
-	{
-	  i = 0;
-	  while (i < size)
-	    {
-	      if (nb_ants < size && size != 1)
-		size--;
-	      printf("On envoie dans le %i eme chemin le plus court\n", (size - i));
-	      tmp++;
-	      i++;
-	      nb_ants--;
-	    }
-	}
-      else
-	{
-	  printf("on envoie dans LE chemin le plus court\n");
-	  tmp++;
-	  nb_ants--;
-	}
-    }
-  printf("On a envoyé : %i entités\n", tmp);
 }
