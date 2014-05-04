@@ -5,7 +5,7 @@
 ** Login   <nicolas@epitech.net>
 ** 
 ** Started on  Sun Apr 27 13:00:58 2014 Nicolas Ades
-** Last update Sun May  4 16:01:06 2014 Geoffrey Merran
+** Last update Sun May  4 17:42:56 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -63,6 +63,5 @@ t_path		*find_ways(t_map *map)
   travel_rooms(map, map->start, 1, path);
   if (path->way == NULL)
     my_error("~ Error : there are no way found to the final room ~\n");
-  aff_way(path->way);
   return (path);
 }

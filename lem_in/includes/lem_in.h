@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Tue Apr 22 14:58:46 2014 Geoffrey Merran
-** Last update Sun May  4 16:01:15 2014 Geoffrey Merran
+** Last update Sun May  4 17:22:00 2014 Geoffrey Merran
 */
 
 #ifndef LEM_IN_
@@ -61,7 +61,14 @@ typedef struct	s_ant
   int		id;
   int		room;
   t_way		*way;
-  t_ant		*next;
+  struct s_ant 	*next;
 }		t_ant;
+
+typedef	struct	s_anthill
+{
+  t_ant		*head;
+  t_ant		*tail;
+  int		nb_ants;
+}		t_anthill;
 
 #endif /* LEM_IN_ */
