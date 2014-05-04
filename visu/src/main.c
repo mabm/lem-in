@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Wed Apr 30 15:33:38 2014 Joris Bertomeu
-** Last update Sun May  4 13:34:43 2014 Joris Bertomeu
+** Last update Sun May  4 16:08:12 2014 Jeremy Mediavilla
 */
 
 #include "visu.h"
@@ -53,7 +53,7 @@ int		main(int argc, char *argv[])
   continuef = 1;
   SDL_WM_SetCaption("Lem-In - Visu", NULL);
   init_start(argc, argv, sys);
-  SDL_EnableKeyRepeat(10,10);
+  SDL_EnableKeyRepeat(10, 10);
   parse(sys);
   update_screen(sys);
   while (continuef)

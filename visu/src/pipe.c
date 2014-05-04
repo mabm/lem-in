@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:25:43 2014 Joris Bertomeu
-** Last update Sun May  4 12:31:40 2014 Joris Bertomeu
+** Last update Sun May  4 16:09:06 2014 Jeremy Mediavilla
 */
 
 #include "visu.h"
@@ -61,7 +61,8 @@ void	write_info_all(t_system *sys)
   while (i < 512)
     {
       if (sys->element[i].name != NULL)
-	write_info(sys->element[i].name, sys->element[i].x, sys->element[i].y, sys);
+	write_info(sys->element[i].name, sys->element[i].x,
+		   sys->element[i].y, sys);
       i++;
     }
 }
