@@ -1,14 +1,26 @@
 /*
-** main.c for main in /home/merran_g/work/c_elem/lem-in/lem_in/core
+** main.c for main in /home/merran_g/work/c_elem/lem-in
 ** 
 ** Made by Geoffrey Merran
 ** Login   <merran_g@epitech.net>
 ** 
-** Started on  Tue Apr 22 13:59:42 2014 Geoffrey Merran
-** Last update Fri May  2 20:02:54 2014 Geoffrey Merran
+** Started on  Sun May  4 15:13:29 2014 Geoffrey Merran
+** Last update Sun May  4 15:13:32 2014 Geoffrey Merran
 */
 
 #include "main.h"
+
+void		reinit_map_vals(t_map *map)
+{
+  t_room	*tmp;
+
+  tmp = map->head;
+  while (tmp != NULL)
+    {
+      tmp->val = 0;
+      tmp = tmp->next;
+    }
+}
 
 void		lem_in()
 {
@@ -17,6 +29,8 @@ void		lem_in()
 
   map = parse_lemin();
   path = find_ways(map);
+  reinit_map_vals(map);
+  /* lem_in_take_a_selfie(path, map->nb_ants); */
 }
 
 int	main(int ac, char **av)
