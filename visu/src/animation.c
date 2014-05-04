@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:26:13 2014 Joris Bertomeu
-** Last update Sun May  4 12:32:05 2014 Joris Bertomeu
+** Last update Sun May  4 12:48:27 2014 Joris Bertomeu
 */
 
 #include "visu.h"
@@ -30,7 +30,7 @@ void		put_ant_screen(int x, int y, t_system *sys)
 
   pos.x = x;
   pos.y = y;
-  tmp = IMG_Load("ant.png");
+  tmp = IMG_Load("img/ant.png");
   ant = rotozoomSurface(tmp, -45, 0.5, 1);
   SDL_BlitSurface(ant, NULL, sys->screen, &pos);
   SDL_Flip(sys->screen);

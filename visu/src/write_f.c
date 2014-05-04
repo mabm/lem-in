@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:22:10 2014 Joris Bertomeu
-** Last update Sun May  4 12:31:27 2014 Joris Bertomeu
+** Last update Sun May  4 12:49:22 2014 Joris Bertomeu
 */
 
 #include "visu.h"
@@ -20,7 +20,7 @@ void		write_nbr_tour(t_system *sys)
 
   TTF_Init();
   sprintf(final, "Tour : %d", sys->tour);
-  font = TTF_OpenFont("font.ttf", 40);
+  font = TTF_OpenFont("font/font.ttf", 40);
   set_color(&color);
   txt = TTF_RenderText_Blended(font, final, color);
   pos.x = 700;
@@ -49,7 +49,7 @@ void		write_info(char *name_box, int x, int y, t_system *sys)
     sprintf(final, "[%s] %d ants - END", name_box, sys->element[id].nbr_ants);
   else
     sprintf(final, "[%s] %d ants", name_box, sys->element[id].nbr_ants);
-  font = TTF_OpenFont("font.ttf", 15);
+  font = TTF_OpenFont("font/font.ttf", 15);
   txt = TTF_RenderText_Blended(font, final, color);
   pos.x = x;
   pos.y = y - 30;
@@ -67,7 +67,7 @@ void		place_box(char *name_box, int x, int y, t_system *sys)
   pos.y = y;
   sys->nbr = 0;
   write_info(name_box, x, y, sys);
-  box = IMG_Load("house.png");
+  box = IMG_Load("img/house.png");
   SDL_BlitSurface(box, NULL, sys->map, &pos);
   free(box);
 }
