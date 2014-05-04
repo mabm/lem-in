@@ -5,12 +5,12 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Wed Apr 30 15:33:38 2014 Joris Bertomeu
-** Last update Sun May  4 16:08:12 2014 Jeremy Mediavilla
+** Last update Sun May  4 20:01:08 2014 Joris Bertomeu
 */
 
 #include "visu.h"
 
-void	init_start(int ac, char **argv, t_system *sys)
+void		init_start(int ac, char **argv, t_system *sys)
 {
   sys->func = 0;
   sys->screen = SDL_SetVideoMode(WIDTH, HEIGHT,
@@ -21,6 +21,9 @@ void	init_start(int ac, char **argv, t_system *sys)
     sys->speed = 1000000 / atoi(argv[1]);
   else
     sys->speed = 1000000;
+  TTF_Init();
+  if ((sys->font = TTF_OpenFont("font/font.ttf", 15)) == NULL)
+    printe(TTF_GetError());
 }
 
 void	check_nbr_ants(char *str, t_system *sys)
@@ -47,6 +50,7 @@ int		main(int argc, char *argv[])
   t_system	*sys;
 
   sys = xmalloc(sizeof(*sys));
+  memset(sys, 0, sizeof(*sys));
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     printe("Error : SDL Init\n");
   atexit(SDL_Quit);

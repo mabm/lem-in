@@ -5,14 +5,10 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Mon Apr 21 19:12:30 2014 Joris Bertomeu
-** Last update Sun May  4 13:44:34 2014 Joris Bertomeu
+** Last update Sun May  4 20:02:44 2014 Joris Bertomeu
 */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "visu.h"
 #include "gnl.h"
 
 void	*xmalloc(int sz)
@@ -60,6 +56,7 @@ char		*get_next_line(const int fd)
 
   var.i = 0;
   var.buffer = xmalloc(BUF_READ + 1);
+  memset(var.buffer, 0, BUF_READ + 1);
   while (var.i < BUF_READ)
     {
       if (save == 0)

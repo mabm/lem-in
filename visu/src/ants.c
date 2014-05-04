@@ -5,14 +5,13 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:26:52 2014 Joris Bertomeu
-** Last update Sun May  4 12:32:01 2014 Joris Bertomeu
+** Last update Sun May  4 19:58:15 2014 Joris Bertomeu
 */
 
 #include "visu.h"
 
 void	update_all(char *name, char *room, t_system *sys)
 {
-  printf("Fourmis numero %s va dans la salle %s\n\n", name, room);
   del_ant_in_room(name, sys, room);
   add_ant_in_room(name, room, sys);
   update_screen(sys);

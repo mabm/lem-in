@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:20:41 2014 Joris Bertomeu
-** Last update Sun May  4 12:31:36 2014 Joris Bertomeu
+** Last update Sun May  4 19:51:06 2014 Joris Bertomeu
 */
 
 #include "visu.h"
@@ -24,7 +24,8 @@ int	sort_id(t_system *sys, char *name)
 	}
       i++;
     }
-  return (-1);
+  printf("Error : Name (%s) of room unfoudable\n", name);
+  exit (-1);
 }
 
 int	sort_id_ant(t_system *sys, char *name)
@@ -41,14 +42,15 @@ int	sort_id_ant(t_system *sys, char *name)
 	}
       i++;
     }
-  return (-1);
+  printf("Error : Name (%s) of ant unfoudable\n", name);
+  exit (0);
 }
 
-void	set_color(SDL_Color *color)
+void	set_color(SDL_Color *color, int r, int g, int b)
 {
-  color->r = 255;
-  color->g = 255;
-  color->b = 255;
+  color->r = r;
+  color->g = g;
+  color->b = b;
 }
 
 void	save_box(char *name, t_coor *pos, t_system *sys, int func)
@@ -60,7 +62,10 @@ void	save_box(char *name, t_coor *pos, t_system *sys, int func)
   sys->element[sys->nbr_box].x = pos->x * 40 + 80;
   sys->element[sys->nbr_box].y = pos->y * 40 + 80;
   sys->element[sys->nbr_box].func = func;
-  sys->element[sys->nbr_box].name = xmalloc(strlen(name) * sizeof(*name));
+  sys->element[sys->nbr_box].name = xmalloc((strlen(name) + 1)
+					    * sizeof(*name));
+  memset(sys->element[sys->nbr_box].name, 0,
+	 (strlen(name) + 1) * sizeof(*name));
   strcpy(sys->element[sys->nbr_box].name, name);
 }
 

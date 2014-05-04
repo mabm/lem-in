@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:26:13 2014 Joris Bertomeu
-** Last update Sun May  4 12:48:27 2014 Joris Bertomeu
+** Last update Sun May  4 19:57:01 2014 Joris Bertomeu
 */
 
 #include "visu.h"
@@ -68,7 +68,7 @@ void	del_ant_in_room(char *name, t_system *sys, char *room)
   id_room_target = sort_id(sys, room);
   id_room = sort_id(sys, sys->ants[id].box);
   sys->element[id_room].nbr_ants -= 1;
-  printf("Une fourmis numéro %s part de la room %s ( Reste %d )\n",
+  printf("Ant named %s leaves %s room ( it stay %d ant(s) )\n",
   	 sys->ants[id].name, sys->element[id_room].name,
   	 sys->element[id_room].nbr_ants);
   anim_ant(id_room, id_room_target, sys);
@@ -83,7 +83,7 @@ void	add_ant_in_room(char *name, char *room, t_system *sys)
   id = sort_id_ant(sys, name);
   sprintf(sys->ants[id].box, "%s", room);
   sys->element[id_room].nbr_ants += 1;
-  printf("Une fourmis numéro %s ajoutee a la room %s ( Reste %d )\n\n",
+  printf("Ant named %s goes to %s room ( There is %d ant(s) in this room )\n\n",
   	 sys->ants[id].name, sys->element[id_room].name,
   	 sys->element[id_room].nbr_ants);
   update_screen(sys);

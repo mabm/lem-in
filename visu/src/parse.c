@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:18:21 2014 Joris Bertomeu
-** Last update Sun May  4 13:22:33 2014 Joris Bertomeu
+** Last update Sun May  4 19:48:14 2014 Joris Bertomeu
 */
 
 #include "visu.h"
@@ -58,12 +58,18 @@ void		tread_line(char *str, t_system *sys)
 
 void	decision(t_coor flag, t_coor pos, char *str, t_system *sys)
 {
-  if (flag.x == 2 && flag.y == 0)
-    parse_decl(str, sys, sys->func, 0);
+  if (flag.x == 2 && str[0] != 'P')
+    {
+      parse_decl(str, sys, sys->func, 0);
+    }
   else if (flag.x == 0 && pos.y != 0 && str[0] != 'P')
-    parse_pipe(str, sys, 0, 0);
+    {
+      parse_pipe(str, sys, 0, 0);
+    }
   else
-    parse_path(str, sys);
+    {
+      parse_path(str, sys);
+    }
 }
 
 void		parse_path(char *str, t_system *sys)

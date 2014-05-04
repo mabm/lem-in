@@ -5,34 +5,29 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:22:10 2014 Joris Bertomeu
-** Last update Sun May  4 12:49:22 2014 Joris Bertomeu
+** Last update Sun May  4 20:00:27 2014 Joris Bertomeu
 */
 
 #include "visu.h"
 
 void		write_nbr_tour(t_system *sys)
 {
-  TTF_Font	*font;
   SDL_Rect	pos;
   SDL_Surface	*txt;
   char		final[4096];
   SDL_Color	color;
 
-  TTF_Init();
   sprintf(final, "Tour : %d", sys->tour);
-  font = TTF_OpenFont("font/font.ttf", 40);
-  set_color(&color);
-  txt = TTF_RenderText_Blended(font, final, color);
-  pos.x = 700;
-  pos.y = 30;
+  set_color(&color, 0, 255, 255);
+  txt = TTF_RenderText_Blended(sys->font, final, color);
+  pos.x = 10;
+  pos.y = 10;
   SDL_BlitSurface(txt, NULL, sys->screen, &pos);
-  free(font);
   free(txt);
 }
 
 void		write_info(char *name_box, int x, int y, t_system *sys)
 {
-  TTF_Font	*font;
   SDL_Rect	pos;
   SDL_Surface	*txt;
   char		final[4096];
@@ -40,21 +35,18 @@ void		write_info(char *name_box, int x, int y, t_system *sys)
   SDL_Color	color;
 
   id = sort_id(sys, name_box);
-  TTF_Init();
-  set_color(&color);
+  set_color(&color, 255, 0, 0);
   if (sys->element[id].func == 1)
     sprintf(final, "[%s] %d ants - START", name_box,
-	    sys->element[id].nbr_ants);
+  	    sys->element[id].nbr_ants);
   else if (sys->element[id].func == 2)
     sprintf(final, "[%s] %d ants - END", name_box, sys->element[id].nbr_ants);
   else
     sprintf(final, "[%s] %d ants", name_box, sys->element[id].nbr_ants);
-  font = TTF_OpenFont("font/font.ttf", 15);
-  txt = TTF_RenderText_Blended(font, final, color);
+  txt = TTF_RenderText_Blended(sys->font, final, color);
   pos.x = x;
   pos.y = y - 30;
   SDL_BlitSurface(txt, NULL, sys->screen, &pos);
-  free(font);
   free(txt);
 }
 

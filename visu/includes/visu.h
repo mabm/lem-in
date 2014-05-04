@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Wed Apr 30 15:50:26 2014 Joris Bertomeu
-** Last update Sun May  4 13:42:56 2014 Joris Bertomeu
+** Last update Sun May  4 20:02:21 2014 Joris Bertomeu
 */
 
 #ifndef VISU_H
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -64,6 +65,7 @@ struct s_system
   int		nbr_ants;
   t_coor	pos;
   t_ants	ants[1024];
+  TTF_Font	*font;
   int		tour;
   int		func;
   int		speed;
@@ -75,9 +77,10 @@ void		place_box(char *name_box, int x, int y, t_system *sys);
 void		init_t_pos(t_coor *pos1, t_coor *pos2);
 void		grep_coor(int i, t_coor *pos, t_system *sys);
 int		sort_id(t_system *sys, char *name);
+void		printe(char *str);
 void		check_nbr_ants(char *str, t_system *sys);
 int		sort_id_ant(t_system *sys, char *name);
-void		set_color(SDL_Color *color);
+void		set_color(SDL_Color *color, int r, int g, int b);
 void		save_box(char *name, t_coor *pos, t_system *sys, int func);
 void		init_coor(t_coor *pos);
 void		do_op(t_coor *pos1, t_system *sys, int i);
