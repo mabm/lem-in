@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:23:49 2014 Joris Bertomeu
-** Last update Sun May  4 12:31:54 2014 Joris Bertomeu
+** Last update Sun May  4 16:07:46 2014 Jeremy Mediavilla
 */
 
 #include "visu.h"
@@ -54,7 +54,7 @@ void	step2(t_coor *pos1, t_coor *pos2, t_coor incr, SDL_Surface *surf)
     {
       y += incr.y;
       error += dx;
-      if(error > dy)
+      if (error > dy)
 	{
 	  error -= dy;
 	  x += incr.x;
@@ -83,7 +83,7 @@ void	step1(t_coor *pos1, t_coor *pos2, t_coor incr, SDL_Surface *surf)
     {
       x += incr.x;
       error += dy;
-      if(error > dx)
+      if (error > dx)
 	{
 	  error -= dx;
 	  y += incr.y;

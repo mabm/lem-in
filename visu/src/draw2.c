@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:24:32 2014 Joris Bertomeu
-** Last update Sun May  4 13:29:13 2014 Joris Bertomeu
+** Last update Sun May  4 16:07:57 2014 Jeremy Mediavilla
 */
 
 #include "visu.h"
@@ -58,15 +58,15 @@ void		ml(SDL_Surface* surf, t_coor *pos1, t_coor *pos2)
 
   Dx = abs(pos2->x - pos1->x);
   Dy = abs(pos2->y - pos1->y);
-  if(pos1->x < pos2->x)
+  if (pos1->x < pos2->x)
     incr.x = 1;
   else
     incr.x = -1;
-  if(pos1->y < pos2->y)
+  if (pos1->y < pos2->y)
     incr.y = 1;
   else
     incr.y = -1;
-  if(Dx > Dy)
+  if (Dx > Dy)
     step1(pos1, pos2, incr, surf);
   else
     step2(pos1, pos2, incr, surf);
