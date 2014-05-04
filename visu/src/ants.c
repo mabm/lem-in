@@ -54,9 +54,9 @@ void	set_property_ants_all(int total, t_system *sys, char *name)
   i = 0;
   while (i < total)
     {
-      sys->ants[i].name = malloc(512 * sizeof(char));
+      sys->ants[i].name = xmalloc(512 * sizeof(char));
       sprintf(sys->ants[i].name, "%d", i + 1);
-      sys->ants[i].box = malloc(512 * sizeof(char));
+      sys->ants[i].box = xmalloc(512 * sizeof(char));
       sprintf(sys->ants[i].box, "%s", name);
       i++;
     }

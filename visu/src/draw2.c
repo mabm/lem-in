@@ -5,10 +5,21 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:24:32 2014 Joris Bertomeu
-** Last update Sun May  4 12:31:57 2014 Joris Bertomeu
+** Last update Sun May  4 13:29:13 2014 Joris Bertomeu
 */
 
 #include "visu.h"
+
+void	check_nbr_box(t_system *sys)
+{
+  if (sys->nbr_box >= 511)
+    {
+      exit (0);
+      printf("Error : Number maximum of box must be inferior at 512\n");
+    }
+  else
+    sys->nbr_box++;
+}
 
 void		parse_decl(char *str, t_system *sys, int func, int cmptr)
 {
@@ -16,8 +27,8 @@ void		parse_decl(char *str, t_system *sys, int func, int cmptr)
   t_coor	*pos;
   t_coor	*pos2;
 
-  pos = malloc(sizeof(t_coor));
-  pos2 = malloc(sizeof(t_coor));
+  pos = xmalloc(sizeof(t_coor));
+  pos2 = xmalloc(sizeof(t_coor));
   init_t_pos(pos, pos2);
   while (str[pos2->x])
     {
@@ -35,8 +46,8 @@ void		parse_decl(char *str, t_system *sys, int func, int cmptr)
       pos2->x++;
     }
   name[pos2->y] = 0;
+  check_nbr_box(sys);
   save_box(name, pos, sys, func);
-  sys->nbr_box++;
 }
 
 void		ml(SDL_Surface* surf, t_coor *pos1, t_coor *pos2)
@@ -72,9 +83,9 @@ void	draw_tunel(char *name1, char *name2, t_system *sys)
   t_coor	*pos1;
   t_coor	*pos2;
 
-  pos1 = malloc(sizeof(t_coor));
+  pos1 = xmalloc(sizeof(t_coor));
   init_coor(pos1);
-  pos2 = malloc(sizeof(t_coor));
+  pos2 = xmalloc(sizeof(t_coor));
   init_coor(pos2);
   i = 0;
   while (i < 512)

@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Wed Apr 30 15:33:38 2014 Joris Bertomeu
-** Last update Sun May  4 12:27:30 2014 Joris Bertomeu
+** Last update Sun May  4 13:34:43 2014 Joris Bertomeu
 */
 
 #include "visu.h"
@@ -23,14 +23,32 @@ void	init_start(int ac, char **argv, t_system *sys)
     sys->speed = 1000000;
 }
 
+void	check_nbr_ants(char *str, t_system *sys)
+{
+  if (atoi(str) >= 1023)
+    {
+      printf("Error : Maximum number of ants is 1024 for Visu .. Sorry\n");
+      exit (0);
+    }
+  else
+    sys->nbr_ants = atoi(str);
+}
+
+void	printe(char *str)
+{
+  printf("%s", str);
+  exit (-1);
+}
+
 int		main(int argc, char *argv[])
 {
   SDL_Event	event;
   int		continuef;
   t_system	*sys;
 
-  sys = malloc(sizeof(*sys));
-  SDL_Init(SDL_INIT_VIDEO);
+  sys = xmalloc(sizeof(*sys));
+  if (SDL_Init(SDL_INIT_VIDEO) == -1)
+    printe("Error : SDL Init\n");
   atexit(SDL_Quit);
   continuef = 1;
   SDL_WM_SetCaption("Lem-In - Visu", NULL);

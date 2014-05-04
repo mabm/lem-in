@@ -60,7 +60,7 @@ void	save_box(char *name, t_coor *pos, t_system *sys, int func)
   sys->element[sys->nbr_box].x = pos->x * 40 + 80;
   sys->element[sys->nbr_box].y = pos->y * 40 + 80;
   sys->element[sys->nbr_box].func = func;
-  sys->element[sys->nbr_box].name = malloc(strlen(name) * sizeof(*name));
+  sys->element[sys->nbr_box].name = xmalloc(strlen(name) * sizeof(*name));
   strcpy(sys->element[sys->nbr_box].name, name);
 }
 

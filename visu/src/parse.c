@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Sun May  4 12:18:21 2014 Joris Bertomeu
-** Last update Sun May  4 12:31:44 2014 Joris Bertomeu
+** Last update Sun May  4 13:22:33 2014 Joris Bertomeu
 */
 
 #include "visu.h"
@@ -17,7 +17,7 @@ void	parse(t_system *sys)
 
   sys->current = 0;
   sys->nbr_box = 0;
-  tmp = malloc(4096 * sizeof(*tmp));
+  tmp = xmalloc(4096 * sizeof(*tmp));
   fd = 0;
   while ((tmp = get_next_line(fd)) != NULL)
     {
@@ -83,7 +83,7 @@ void		parse_path(char *str, t_system *sys)
       i++;
     }
   if (nbr == strlen(str))
-    sys->nbr_ants = atoi(str);
+    check_nbr_ants(str, sys);
   else if (flag == 0)
     {
       put_ants_room(sys, sys->nbr_ants);

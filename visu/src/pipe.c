@@ -16,7 +16,7 @@ void		do_op(t_coor *pos1, t_system *sys, int i)
   t_coor	*pos2;
 
   j = 0;
-  pos2 = malloc(sizeof(*pos2));
+  pos2 = xmalloc(sizeof(*pos2));
   while (j < 512)
     {
       if (sys->element[j].name != NULL)
@@ -38,7 +38,7 @@ void	redraw_pipe(t_system *sys)
   int		i;
   t_coor	*pos1;
 
-  pos1 = malloc(sizeof(*pos1));
+  pos1 = xmalloc(sizeof(*pos1));
   i = 0;
   while (i < 512)
     {

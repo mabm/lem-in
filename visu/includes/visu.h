@@ -5,8 +5,14 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Wed Apr 30 15:50:26 2014 Joris Bertomeu
-** Last update Sun May  4 12:59:09 2014 Joris Bertomeu
+** Last update Sun May  4 13:42:56 2014 Joris Bertomeu
 */
+
+#ifndef VISU_H
+# define VISU_H
+# define _BSD_SOURCE
+# define HEIGHT 768
+# define WIDTH 1024
 
 # include <stdio.h>
 # include <unistd.h>
@@ -20,9 +26,6 @@
 # include <SDL/SDL_image.h>
 # include <SDL/SDL_rotozoom.h>
 # include "gnl.h"
-
-# define HEIGHT 768
-# define WIDTH 1024
 
 typedef struct s_elm t_elm;
 struct s_elm
@@ -72,6 +75,7 @@ void		place_box(char *name_box, int x, int y, t_system *sys);
 void		init_t_pos(t_coor *pos1, t_coor *pos2);
 void		grep_coor(int i, t_coor *pos, t_system *sys);
 int		sort_id(t_system *sys, char *name);
+void		check_nbr_ants(char *str, t_system *sys);
 int		sort_id_ant(t_system *sys, char *name);
 void		set_color(SDL_Color *color);
 void		save_box(char *name, t_coor *pos, t_system *sys, int func);
@@ -104,3 +108,5 @@ void		put_ant_screen(int x, int y, t_system *sys);
 void		anim_ant(int id_room_start, int id_room_end, t_system *sys);
 void		del_ant_in_room(char *name, t_system *sys, char *room);
 void		add_ant_in_room(char *name, char *room, t_system *sys);
+
+#endif /* VISU_H */
