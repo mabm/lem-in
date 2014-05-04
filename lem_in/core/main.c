@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May  4 15:13:29 2014 Geoffrey Merran
-** Last update Sun May  4 17:20:22 2014 Geoffrey Merran
+** Last update Sun May  4 19:17:51 2014 Geoffrey Merran
 */
 
 #include "main.h"
@@ -32,6 +32,9 @@ void		lem_in()
   path = find_ways(map);
   reinit_map_vals(map);
   lem_in_take_a_selfie(map, path->way);
+  free_map(map);
+  free_access(path->access);
+  free_ways(path->way);
 }
 
 int	main(int ac, char **av)

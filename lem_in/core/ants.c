@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri May  2 20:01:46 2014 Geoffrey Merran
-** Last update Sun May  4 17:22:54 2014 Geoffrey Merran
+** Last update Sun May  4 18:57:09 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -29,13 +29,42 @@ void		add_ant(t_anthill *anthill, int id, t_way *way)
   new->next = NULL;
   if (anthill->tail == NULL)
     {
+      new->prev = NULL;
       anthill->head = new;
       anthill->tail = new;
     }
   else
     {
       anthill->tail->next = new;
+      new->prev = anthill->tail;
       anthill->tail = new;
     }
   anthill->nb_ants++;
+}
+
+t_ant		*remove_ant(t_ant *ant, t_anthill *anthill)
+{
+  t_ant		*tmp;
+
+  if (ant->prev != NULL)
+    ant->prev->next = ant->next;
+  if (ant->next != NULL)
+    ant->next->prev = ant->prev;
+  if (ant == anthill->head && ant == anthill->tail)
+    {
+      anthill->head = NULL;
+      anthill->tail = NULL;
+      free(ant);
+      return (NULL);
+    }
+  else
+    {
+      if (anthill->head == ant)
+	anthill->head = ant->next;
+      if (anthill->tail == ant)
+	anthill->tail = ant->prev;
+      tmp = ant->next;
+      free(ant);
+      return (tmp);
+    }
 }

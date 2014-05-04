@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Sun May  4 15:13:55 2014 Geoffrey Merran
-** Last update Sun May  4 17:40:38 2014 Geoffrey Merran
+** Last update Sun May  4 19:17:13 2014 Geoffrey Merran
 */
 
 #ifndef CORE_
@@ -36,6 +36,7 @@ void		add_ant(t_anthill *anthill, int id, t_way *way);
 void		push_ants(t_map *map, t_anthill *anthill);
 int		move_next_room(t_map *map, t_ant *ant, int esp);
 void		create_ants(t_map *map, t_anthill *anthill, t_way *way);
+t_ant		*remove_ant(t_ant *ant, t_anthill *anthill);
 
 /*
 ** Lem_in
@@ -43,5 +44,13 @@ void		create_ants(t_map *map, t_anthill *anthill, t_way *way);
 
 void		lem_in_take_a_selfie(t_map *map, t_way *way);
 void		lem_in();
+
+/*
+** Free
+*/
+
+void		free_access(t_access *access);
+void		free_map(t_map *map);
+void		free_ways(t_way *ways);
 
 #endif /* CORE_ */

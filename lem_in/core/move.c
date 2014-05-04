@@ -5,7 +5,7 @@
 ** Login   <mediav_j@epitech.net>
 ** 
 ** Started on  Sat May  3 17:00:36 2014 Jeremy Mediavilla
-** Last update Sun May  4 17:41:04 2014 Geoffrey Merran
+** Last update Sun May  4 19:21:04 2014 Geoffrey Merran
 */
 
 #include "core.h"
@@ -49,7 +49,10 @@ void		push_ants(t_map *map, t_anthill *anthill)
   while (tmp)
     {
       esp = move_next_room(map, tmp, esp);
-      tmp = tmp->next;
+      if (tmp->room == 0)
+	tmp = remove_ant(tmp, anthill);
+      else
+	tmp = tmp->next;
     }
   printf("\n");
 }
@@ -82,4 +85,5 @@ void		lem_in_take_a_selfie(t_map *map, t_way *way)
       create_ants(map, anthill, way);
       push_ants(map, anthill);
     }
+  free(anthill);
 }
