@@ -1,3 +1,13 @@
+##
+## Makefile for Makefile in /home/merran_g/work/c_elem/lem-in/visu
+## 
+## Made by Geoffrey Merran
+## Login   <merran_g@epitech.net>
+## 
+## Started on  Sun May  4 17:52:54 2014 Geoffrey Merran
+## Last update Sun May  4 17:52:55 2014 Geoffrey Merran
+##
+
 CC		=	gcc -Iincludes
 
 CFLAGS		+=	-W -Wextra -Wall -ansi -pedantic

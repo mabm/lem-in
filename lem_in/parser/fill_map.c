@@ -5,7 +5,7 @@
 ** Login   <merran_g@epitech.net>
 ** 
 ** Started on  Fri Apr 25 16:01:08 2014 Geoffrey Merran
-** Last update Sun May  4 15:16:06 2014 Geoffrey Merran
+** Last update Sun May  4 18:01:26 2014 Geoffrey Merran
 */
 
 #include "parser.h"
@@ -22,6 +22,8 @@ void	get_nb_ants(char **tab, int *step, t_map *map)
       if (*step != 0)
 	my_error("Invalid syntax : check how to build a map\n");
       map->nb_ants = atoi(tab[0]);
+      if (map->nb_ants < 0)
+	my_error("Invalid ants : negative value\n");
       *step = 1;
       printf("%s\n", tab[0]);
     }
