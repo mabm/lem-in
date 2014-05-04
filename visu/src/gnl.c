@@ -5,7 +5,7 @@
 ** Login   <jobertomeu@epitech.net>
 ** 
 ** Started on  Mon Apr 21 19:12:30 2014 Joris Bertomeu
-** Last update Thu Apr 24 16:56:59 2014 Geoffrey Merran
+** Last update Sun May  4 12:55:58 2014 Joris Bertomeu
 */
 
 #include <unistd.h>
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include "gnl.h"
 
-static void	*xmalloc(int sz)
+void	*xmalloc(int sz)
 {
   void		*p;
 

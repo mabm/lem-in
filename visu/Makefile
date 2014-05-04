@@ -23,7 +23,7 @@ all:		visu
 
 visu:		$(OBJ)
 		@echo -e "\n > COMPILATION DES .C VISU-HEX EN COURS\n"
-		$(CC) -o $(NOM) $(OBJ) -lSDL_gfx -lSDL -lGL -lGLU -lSDL_image -lSDLmain -lSDL_ttf -g3
+		$(CC) -o $(NOM) $(OBJ) -lSDL_gfx -lSDL -lSDL_image -lSDLmain -lSDL_ttf -g3
 		@echo -e "\n > COMPILATION DES .C VISU-HEX TERMINEE"
 		# @cat ../makefile_deco/girl2
 
